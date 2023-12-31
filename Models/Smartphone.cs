@@ -3,22 +3,70 @@ namespace DesafioPOO.Models
     public abstract class Smartphone
     {
         public string Numero { get; set; }
-        // TODO: Implementar as propriedades faltantes de acordo com o diagrama
+        public string Modelo { get; set; }
 
-        public Smartphone(string numero)
+        public string Imei { get; set; }
+
+        public int Memoria { get; set; }
+
+        public bool EstaLigado { get; set; }  //nova propriedade
+
+        public int CapacidadeBateria { get; set; } //nova propriedade
+
+        public Smartphone()
+        {
+
+        }
+
+        public Smartphone(string numero, string modelo, string imei,int memoria,bool estaLigado, int capacidadeBateria)
         {
             Numero = numero;
-            // TODO: Passar os parâmetros do construtor para as propriedades
+            Modelo = modelo;
+            Imei = imei;
+            Memoria = memoria;
+            EstaLigado = estaLigado;
+            CapacidadeBateria = capacidadeBateria;
+
         }
 
         public void Ligar()
         {
-            Console.WriteLine("Ligando...");
+            if (!EstaLigado)
+            {
+                Console.WriteLine("Ligando . . .");
+                EstaLigado = true;
+
+            }
+            else
+            {
+                Console.WriteLine("O smarthpgone já esta ligado.");
+            }
         }
 
-        public void ReceberLigacao()
+        public void Desligar()//novo método
         {
-            Console.WriteLine("Recebendo ligação...");
+            if (EstaLigado)
+            {
+                Console.WriteLine("Desligando . . .");
+                EstaLigado = false;
+            }
+            else
+            {
+                Console.WriteLine("O smarthpgone já esta desligado.");
+            }
+        }
+
+        public void ReceberLigacao() //modificado
+        {
+            if (EstaLigado)
+            {
+                Console.WriteLine("Recebendo ligação...");
+            }
+            else
+            {
+                Console.WriteLine("O Smarthphone esta desligado nao pode receber ligação...");
+
+            }
         }
 
         public abstract void InstalarAplicativo(string nomeApp);
